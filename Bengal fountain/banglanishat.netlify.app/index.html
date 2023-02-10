@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" type="image/png" href="" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="" />
+
+    <link rel="mask-icon" type="image/x-icon" href="" color="#111" />
+
+
+
+    <title>Bangla language rain</title>
+
+
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+
+</head>
+
+<body translate="no">
+    <html>
+
+    <head>
+    </head>
+
+    <body>
+        <canvas id="b"></canvas>
+        <div class="author">Nishat Vasker</div>
+    </body>
+
+    </html>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+    <script id="rendered-js">
+        var b = document.getElementById("b");
+        var ctx = b.getContext("2d");
+
+        //making the canvas full screen
+        b.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        b.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+
+        var bangla = "অআইইউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভময়ড়ঢ়যরলহশষসৎ ং ঃ১২৩৪৫৬৭৮৯০ অআইইউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভময়ড়ঢ়যরলহশষসৎ ং ঃ ঽ১২৩৪৫৬৭৮৯ ০";
+
+        bangla = bangla.split("");
+
+        var font_size = 16;
+        var columns = b.width / font_size;
+        var drops = [];
+
+        for (var x = 0; x < columns; x++)
+            drops[x] = 1;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            function draw() {
+  // Set the fill style for the canvas to a semi-transparent black color
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  // Fill the entire canvas with the above fill style
+  ctx.fillRect(0, 0, b.width, b.height);
+
+  // Set the fill style for the text to green
+  ctx.fillStyle = "#0F0";
+  // Set the font size and type for the text
+  ctx.font = font_size + "px arial";
+
+  // Loop over the drops array
+  for (var i = 0; i < drops.length; i++) {
+    // Choose a random text from the bangla array
+    var text = bangla[Math.floor(Math.random() * bangla.length)];
+
+    // Fill the canvas with the chosen text
+    ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+    // If the text has fallen off the bottom of the canvas and a random number is greater than 0.979, reset its position
+    if (drops[i] * font_size > b.height && Math.random() > 0.945) {
+      drops[i] = 0;
+    }
+
+    // Increment the position of the text
+    drops[i]++;
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        setInterval(draw, 50);//speed control
+        //# sourceURL=pen.js
+    </script>
+
+<p>Nishat Vasker</p>
+
+</body>
+
+</html>
